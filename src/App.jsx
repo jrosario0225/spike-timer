@@ -5,7 +5,7 @@ import './App.css'
 import HomeScreen from './components/HomeScreen'
 
 export default function App() {
-  const [screen, setScreen] = useState('Home');
+  const [screen, setScreen] = useState('home');
   const [uploadedFile, setUploadedFile] = useState(null);
 
   const handleUpload = (file) => {
@@ -20,12 +20,25 @@ export default function App() {
 
   return (
     <div className="app">
-      <HomeScreen 
-      onRecord={handleRecord}
-      onUpload={handleUpload}
-      />
+
+      {screen === "home" && (
+        <HomeScreen
+          onRecord={handleRecord}
+          onUpload={handleUpload}
+        />
+      )}
+
+      {screen === "playback" && (
+        <p>Playback screen coming soon...</p>
+      )}
+
+      {screen === "recording" && (
+        <p>Recording screen coming soon...</p>
+      )}
+
+
     </div>
   )
-   
+
 }
 
