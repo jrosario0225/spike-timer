@@ -3,6 +3,7 @@ import './App.css'
 
 /* Component Imports */
 import HomeScreen from './components/HomeScreen'
+import VideoPlayback from './components/VideoPlayback';
 
 export default function App() {
   const [screen, setScreen] = useState('home');
@@ -29,7 +30,10 @@ export default function App() {
       )}
 
       {screen === "playback" && (
-        <p>Playback screen coming soon...</p>
+        <VideoPlayback
+        uploadedFile={uploadedFile}
+        onGoBack={() => setScreen("home")}
+        />
       )}
 
       {screen === "recording" && (
