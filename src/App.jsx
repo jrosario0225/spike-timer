@@ -18,6 +18,10 @@ export default function App() {
     setScreen("recording")
   }
 
+  const handleComplete = (takeoff, contact, landing) => {
+    setScreen("results");
+  }
+
 
   return (
     <div className="app">
@@ -33,6 +37,7 @@ export default function App() {
         <VideoPlayback
         uploadedFile={uploadedFile}
         onGoBack={() => setScreen("home")}
+        onComplete={handleComplete}
         />
       )}
 
