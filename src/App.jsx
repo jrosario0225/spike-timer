@@ -4,10 +4,12 @@ import './App.css'
 /* Component Imports */
 import HomeScreen from './components/HomeScreen'
 import VideoPlayback from './components/VideoPlayback';
+import Results from "./components/Results";
 
 export default function App() {
   const [screen, setScreen] = useState('home');
   const [uploadedFile, setUploadedFile] = useState(null);
+  const [timestamps, setTimestamps] = useState(null);
 
   const handleUpload = (file) => {
     setUploadedFile(file);
@@ -19,7 +21,13 @@ export default function App() {
   }
 
   const handleComplete = (takeoff, contact, landing) => {
+    setTimestamps({ takeoff, contact, landing })
     setScreen("results");
+  }
+
+  const handleRetry = () => {
+    setTimestamps(null);
+    setScreen("home");
   }
 
 
@@ -38,6 +46,15 @@ export default function App() {
         uploadedFile={uploadedFile}
         onGoBack={() => setScreen("home")}
         onComplete={handleComplete}
+        />
+      )}
+
+      {screen === "results" && timestamps && (
+        <Results
+        takeoff={timestamps.takeoff}
+        contact={timestamps.contact}
+        landing={timestamps.landing}
+        onRetry={handleRetry}
         />
       )}
 
