@@ -142,3 +142,7 @@
     border-color: var(--navy);
     color: var(--navy);
 }
+
+button {
+    outline: none;
+}
