@@ -1,0 +1,144 @@
+.playback-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100dvh;
+    padding: 24px 20px 32px;
+    gap: 16px;
+}
+
+.playback-title {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 2rem;
+    color: var(--navy);
+}
+
+.playback-filename {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: -12px;
+}
+
+.playback-video {
+    width: 100%;
+    border-radius: var(--radius);
+    background: #000;
+}
+
+.frame-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 8px;
+}
+
+.frame-btn {
+    padding: 8px 4px;
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--navy);
+    cursor: pointer;
+    text-align: center;
+}
+
+.frame-btn:active {
+    background: var(--navy);
+    color: white;
+}
+
+.tap-label {
+    text-align: center;
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--navy);
+    padding: 8px;
+}
+
+.tap-button {
+    width: 100%;
+    padding: 20px;
+    background: var(--orange);
+    color: white;
+    font-family: "Bebas Neue", san-serif;
+    font-size: 2rem;
+    letter-spacing: 2px;
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: opacity 0.15s, transform 0.1s;
+}
+
+.tap-button:active {
+    transform: scale(0.97);
+    opacity: 0.85;
+}
+
+.timestamps {
+    background: var(--surface);
+    border-radius: var(--radius);
+    border: 1.5px solid var(--border);
+    overflow: hidden;
+}
+
+.timestamp-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+}
+
+.timestamp-row:last-child {
+    border-bottom: none;
+}
+
+.timestamp-label {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--navy);
+}
+
+.timestamp-value {
+    font-family: monospace;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.see-results-btn {
+    width: 100%;
+    padding: 16px;
+    background: var(--navy);
+    color: white;
+    font-weight: 600;
+    font-size: 1rem;
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: opacity 0.15s;
+}
+
+.see-results-btn:active {
+    opacity: 0.85;
+}
+
+.secondary-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.secondary-btn {
+    flex: 1;
+    padding: 12px;
+    background: transparent;
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    cursor: pointer;
+}
+
+.secondary-btn:active {
+    border-color: var(--navy);
+    color: var(--navy);
+}

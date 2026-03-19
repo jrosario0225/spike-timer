@@ -1,5 +1,6 @@
 import { useRef, useEffect } from "react";
 import { useTimestamps } from "../hooks/useTimestamps";
+import "./VideoPlayback.css"
 
 export default function VideoPlayback({ uploadedFile, onGoBack, onComplete }) {
     const videoRef = useRef(null);
@@ -36,58 +37,72 @@ export default function VideoPlayback({ uploadedFile, onGoBack, onComplete }) {
     }
 
     const handleStep = (seconds) => {
-        if(!videoRef.current) return;
+        if (!videoRef.current) return;
         videoRef.current.currentTime += seconds;
     }
-    
+
 
 
     return (
-        <div>
-            <h2>Analyze Your Spike</h2>
-            <p>{uploadedFile?.name}</p> {/* Takes the file name AND checks "hey is this a file"*/}
+        <div className="playback-container">
+            <h2 className="playback-title">Analyze Your Spike</h2>
+            <p className="playback-filename">{uploadedFile?.name}</p> {/* Takes the file name AND checks "hey is this a file"*/}
 
             <video
                 ref={videoRef}
                 controls
                 playsInline
                 style={{ width: "100%" }}
+                className="playback-video"
             />
 
             <div className="frame-buttons">
-                <button onClick={() => handleStep(-0.1)}> -0.1s </button>
-                <button onClick={() => handleStep(-0.033)}> -1 frame </button>
-                <button onClick={() => handleStep(0.033)}> +1 frame </button>
-                <button onClick={() => handleStep(0.1)}> +0.1s </button>
+                <button className="frame-btn" onClick={() => handleStep(-0.1)}> -0.1s </button>
+                <button className="frame-btn" onClick={() => handleStep(-0.033)}> -1 frame </button>
+                <button className="frame-btn" onClick={() => handleStep(0.033)}> +1 frame </button>
+                <button className="frame-btn" onClick={() => handleStep(0.1)}> +0.1s </button>
             </div>
 
             {/* Shows which tap comes next */}
-            <p>{TAP_LABELS[nextTap]}</p>
+            <p className="tap-label">{TAP_LABELS[nextTap]}</p>
 
             {/* If we still have timestamps we need to put down*/}
             {!isComplete && (
-                <button onClick={handleTap}>
+                <button className="tap-button" onClick={handleTap}>
                     TAP
                 </button>
             )}
 
-            <div className="labelling-timestamsp">
-                <p>Takeoff: {takeoff !== null ? `${takeoff.toFixed(3)}s` : "-" }</p>
-                <p>Contact: {contact !== null ? `${contact.toFixed(3)}s` : "-"} </p>
-                <p>Landing: {landing !== null ? `${landing.toFixed(3)}s` : "-"} </p>
+            <div className="timestamps">
+
+                <div className="timestamp-row">
+                    <span className="timestamp-label">🦵 Takeoff: </span>
+                    <span className="timestamp-value">{takeoff !== null ? `${takeoff.toFixed(3)}s` : "-"}</span>
+                </div>
+
+                <div className="timestamp-row">
+                    <span className="timestamp-label">🏐 Contact: </span>
+                    <span className="timestamp-value">{contact !== null ? `${contact.toFixed(3)}s` : "-"} </span>
+                </div>
+
+                <div className="timestamp-row">
+                    <span className="timestamp-label">🛬 Landing: </span>
+                    <span className="timestamp-value">{landing !== null ? `${landing.toFixed(3)}s` : "-"} </span>
+                </div>
+
             </div>
 
             {/* If we have all of our timestamps, then we show the results */}
             {isComplete && (
-                <button onClick={() => onComplete(takeoff, contact, landing)}>
+                <button className="see-results-btn" onClick={() => onComplete(takeoff, contact, landing)}>
                     See Results →
                 </button>
             )}
 
-            <button onClick={reset}>Reset Taps</button>
-            <button onClick={onGoBack}>
-                ← Pick a different video
-            </button>
+            <div className="secondary-buttons">
+                <button className="secondary-btn" onClick={reset}>Reset Taps</button>
+                <button className="secondary-btn" onClick={onGoBack}> ← Pick a different video </button>
+            </div>
         </div>
     )
 }

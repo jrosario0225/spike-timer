@@ -27,8 +27,8 @@ export function getResultLabel(spikingDifference) {
     const PERFECT_WINDOW = 0.05; // withing 50ms = perfect
 
     if (Math.abs(spikingDifference) <= PERFECT_WINDOW) return "Perfect";
-    if (spikingDifference < 0) return "Early";
-    return "Late";
+    if (spikingDifference < 0) return "Late";
+    return "Early";
 }
 
 function round(n) {
