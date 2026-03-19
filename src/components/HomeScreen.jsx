@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import "./HomeScreen.css";
+import "./HomeScreen.css"
 
 export default function HomeScreen({ onRecord, onUpload }) {
     const fileInputRef = useRef(null);
@@ -10,28 +10,40 @@ export default function HomeScreen({ onRecord, onUpload }) {
     };
 
     return (
-        <div>
+        <div className="home-container">
 
-            <h2>Spike Timer</h2>
-            <p>Analyze your spike timing</p>
-
-            <button onClick={onRecord}>
-                📷 Record a Jump
-            </button>
-
-            <button onClick={() => fileInputRef.current.click()}>
-                 🎬 Upload Footage
-            </button>
+            <div>
+                <h1 className="home-title">Spike Analyzer</h1>
+                <p className="home-subtitle">Analyze your spike timing</p>
+            </div>
 
 
-            <input 
-            ref={fileInputRef}
-            type="file"
-            accept="video/*"
-            style={{ display: "none" }}
-            onChange={handleFileChange}
+            <div className="home-cards">
+                { /* record button */}
+                <button className="home-card" onClick={onRecord}>
+                    <span className="card-icon">📷</span>
+                    <div className="card-title">Record your spike</div>
+                    <h3>(WIP)</h3>
+                    <span className="card-arrow">→</span>
+                </button>
+
+
+                { /* upload button */}
+                <button className="home-card" onClick={() => fileInputRef.current.click()}>
+                    <span className="card-icon">🎬</span>
+                    <div className="card-title">Upload footage</div>
+                    <span className="card-arrow">→</span>
+                </button>
+            </div>
+
+            <input
+                ref={fileInputRef}
+                type="file"
+                accept="video/*"
+                style={{ display: "none" }}
+                onChange={handleFileChange}
             />
-            
+
         </div>
     )
 
