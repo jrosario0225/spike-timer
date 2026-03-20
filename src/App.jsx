@@ -27,7 +27,13 @@ export default function App() {
 
   const handleRetry = () => {
     setTimestamps(null);
-    setScreen("home");
+    setScreen("playback");
+  }
+
+  const handleGoHome = () => {
+    setTimestamps(null);
+    setUploadedFile(null);
+    setScreen("home")
   }
 
 
@@ -55,6 +61,7 @@ export default function App() {
         contact={timestamps.contact}
         landing={timestamps.landing}
         onRetry={handleRetry}
+        onGoHome={handleGoHome}
         />
       )}
 

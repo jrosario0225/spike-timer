@@ -1,7 +1,7 @@
 import { calculateSpikeMetrics, getResultLabel } from "../utils/calculations"
 import "./Results.css";
 
-export default function Results({ takeoff, contact, landing, onRetry }) {
+export default function Results({ takeoff, contact, landing, onRetry, onGoHome }) {
 
     const metrics = calculateSpikeMetrics(takeoff, contact, landing);
     const resultLabel = getResultLabel(metrics.spikingDifference)
@@ -52,9 +52,15 @@ export default function Results({ takeoff, contact, landing, onRetry }) {
                 <p className="accuracy-value">{metrics.accuracy.toFixed(1)}%</p>
             </div>
 
-            <button className="retry" onClick={onRetry}>
-                ← Try Again
-            </button>
+
+            <div className="go-back-btns">
+                <button className="retry" onClick={onRetry}>
+                    ← Try Again
+                </button>
+                <button className="go-homescreen" onClick={onGoHome}>
+                    Upload New Video
+                </button>
+            </div>
         </div>
     )
 }

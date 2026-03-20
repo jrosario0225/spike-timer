@@ -19,13 +19,13 @@ export default function HomeScreen({ onRecord, onUpload }) {
 
 
             <div className="home-cards">
-                { /* record button */}
-                <button className="home-card" onClick={onRecord}>
+                
+                {/* <button className="home-card" onClick={onRecord}>
                     <span className="card-icon">📷</span>
                     <div className="card-title">Record your spike</div>
                     <h3>(WIP)</h3>
                     <span className="card-arrow">→</span>
-                </button>
+                </button> */}
 
 
                 { /* upload button */}

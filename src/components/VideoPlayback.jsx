@@ -1,9 +1,23 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { useTimestamps } from "../hooks/useTimestamps";
 import "./VideoPlayback.css"
 
 export default function VideoPlayback({ uploadedFile, onGoBack, onComplete }) {
     const videoRef = useRef(null);
+
+    const [isPlaying, setIsPlaying] = useState(false);
+
+    const togglePlay = () => {
+        if (!videoRef.current) return;
+
+        if (videoRef.current.paused) {
+            videoRef.current.play();
+            setIsPlaying(true);
+        } else {
+            videoRef.current.pause();
+            setIsPlaying(false);
+        }
+    }
 
     // from hook
     const {
@@ -50,17 +64,20 @@ export default function VideoPlayback({ uploadedFile, onGoBack, onComplete }) {
 
             <video
                 ref={videoRef}
-                controls
                 playsInline
                 style={{ width: "100%" }}
                 className="playback-video"
             />
 
+
+
+
             <div className="frame-buttons">
-                <button className="frame-btn" onClick={() => handleStep(-0.1)}> -0.1s </button>
+                <button className="frame-btn" onClick={() => handleStep(-0.2)}> -0.2s </button>
                 <button className="frame-btn" onClick={() => handleStep(-0.033)}> -1 frame </button>
+                            <button className="frame-btn" onClick={togglePlay}> {isPlaying ? "⏸ Pause" : "▶ Play"} </button>
                 <button className="frame-btn" onClick={() => handleStep(0.033)}> +1 frame </button>
-                <button className="frame-btn" onClick={() => handleStep(0.1)}> +0.1s </button>
+                <button className="frame-btn" onClick={() => handleStep(0.2)}> +0.2s </button>
             </div>
 
             {/* Shows which tap comes next */}
