@@ -1,5 +1,6 @@
 import { useState, React } from 'react'
 import './App.css'
+import { Analytics } from "@vercel/analytics/react"
 
 /* Component Imports */
 import HomeScreen from './components/HomeScreen'
