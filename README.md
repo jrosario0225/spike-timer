@@ -7,7 +7,7 @@ Upload a clip of a spike, tap three moments — takeoff, ball contact, and landi
 **Live App:** https://spike-timer.vercel.app/
 
 ## Demo
-<img> /docs/scren.png </img>
+<img> /docs/screens.png </img>
 
 https://github.com/user-attachments/assets/016b5087-1406-497f-8bcf-1bcbc95a7a7a
 
