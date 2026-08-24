@@ -6,13 +6,8 @@ Upload a clip of a spike, tap three moments — takeoff, ball contact, and landi
 
 ## Demo
 
-![Upload, tap, results](docs/screens.png)
 
-📹 **[Watch the demo](docs/demo.mp4)** — upload a clip, tap three moments, get your timing.
-
-<!-- To play the video inline on GitHub instead of linking to it: drag docs/demo.mp4 into
-     any GitHub issue or PR comment box, copy the https://github.com/user-attachments/assets/…
-     URL it generates, and paste that URL on its own line here. GitHub renders it as a player. -->
+https://github.com/user-attachments/assets/016b5087-1406-497f-8bcf-1bcbc95a7a7a
 
 
 ## How it works
