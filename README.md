@@ -5,9 +5,9 @@ A web app that measures how well-timed a volleyball spike is.
 Upload a clip of a spike, tap three moments — takeoff, ball contact, and landing — and the app tells you whether you hit the ball at the top of your jump, or too early / too late.
 
 **Live App:** https://spike-timer.vercel.app/
+<img src=/docs/screens.png alt="Screen Overview" />
 
 ## Demo
-<img src=/docs/screens.png alt="Screen Overview" />
 
 https://github.com/user-attachments/assets/016b5087-1406-497f-8bcf-1bcbc95a7a7a
 
