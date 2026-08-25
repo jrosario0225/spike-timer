@@ -4,10 +4,9 @@ A web app that measures how well-timed a volleyball spike is. Upload a clip, tap
 
 **Live app:** https://spike-timer.vercel.app
 
-![Screen overview](docs/screens.png)
-
-
-
+<div align="center">
+<img src="docs/demo.gif" width="200" alt="Demo Video" />
+</div>
 
 ---
 
