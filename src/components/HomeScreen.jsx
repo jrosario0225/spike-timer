@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import "./HomeScreen.css"
+import JumpMath from "./JumpMath";
 
 
 export default function HomeScreen({ onRecord, onUpload }) {
@@ -44,6 +45,10 @@ export default function HomeScreen({ onRecord, onUpload }) {
                 style={{ display: "none" }}
                 onChange={handleFileChange}
             />
+
+            <JumpMath />
+
+            <p className="home-privacy-note">🔒 Your videos never leave your device — nothing is saved.</p>
 
         </div>
     )

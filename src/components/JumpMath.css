@@ -1,0 +1,43 @@
+.jump-math {
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 20px 16px 16px;
+}
+
+.jump-math-svg {
+    width: 100%;
+    height: auto;
+    overflow: visible;
+}
+
+.jump-math-label {
+    font-size: 9px;
+    font-family: "DM Sans", sans-serif;
+    fill: var(--text-muted);
+}
+
+.jump-math-label-gold {
+    fill: var(--gold);
+    font-weight: 600;
+}
+
+.jump-math-label-orange {
+    fill: var(--orange);
+    font-weight: 600;
+}
+
+.jump-math-formulas {
+    margin-top: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.jump-math-formulas span {
+    color: var(--navy);
+    font-weight: 600;
+}
