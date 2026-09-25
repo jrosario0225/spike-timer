@@ -41,3 +41,74 @@
     color: var(--text);
     font-weight: 600;
 }
+
+/* The flight path draws first, then its timing markers appear. */
+.jump-math-arc {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    animation: jump-math-draw 0.5s ease-out 0.2s forwards;
+}
+
+.jump-math-endpoint {
+    opacity: 0;
+    animation: jump-math-show 0.25s ease-out 0.65s forwards;
+}
+
+.jump-math-ideal-guide {
+    opacity: 0;
+    animation: jump-math-show 0.3s ease-out 0.72s forwards;
+}
+
+.jump-math-ideal-dot {
+    opacity: 0;
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: jump-math-pop 0.35s ease-out 0.72s forwards;
+}
+
+.jump-math-ideal-label {
+    opacity: 0;
+    animation: jump-math-show 0.25s ease-out 0.88s forwards;
+}
+
+.jump-math-actual-dot {
+    opacity: 0;
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: jump-math-pop 0.35s ease-out 1.15s forwards;
+}
+
+.jump-math-actual-label {
+    opacity: 0;
+    animation: jump-math-show 0.25s ease-out 1.3s forwards;
+}
+
+@keyframes jump-math-draw {
+    to { stroke-dashoffset: 0; }
+}
+
+@keyframes jump-math-show {
+    to { opacity: 1; }
+}
+
+@keyframes jump-math-pop {
+    from { opacity: 0; transform: scale(0.45); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .jump-math-arc {
+        animation: none;
+        stroke-dashoffset: 0;
+    }
+
+    .jump-math-endpoint,
+    .jump-math-ideal-guide,
+    .jump-math-ideal-dot,
+    .jump-math-ideal-label,
+    .jump-math-actual-dot,
+    .jump-math-actual-label {
+        animation: none;
+        opacity: 1;
+    }
+}
