@@ -7,7 +7,7 @@ export default function Results({ takeoff, contact, landing, onRetry, onGoHome }
     const resultLabel = getResultLabel(metrics.spikingDifference)
 
     const isPerfect = resultLabel === "Perfect";
-    const displayLabel = isPerfect ? "Perfect" : `Approach ${resultLabel}`;
+    const displayLabel = isPerfect ? "Perfect" : `Approached ${resultLabel}`;
     const difference = Math.abs(metrics.spikingDifference);
     const timingPhrase = isPerfect
         ? `${Math.round(difference * 1000)} ms from apex`
