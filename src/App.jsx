@@ -14,7 +14,7 @@ export default function App() {
   const [uploadedFile, setUploadedFile] = useState(null);
   const [timestamps, setTimestamps] = useState(null);
   const [transitionClass, setTransitionClass] = useState("");
-  const [theme, setTheme] = useState(() => localStorage.getItem("spike-timer-theme") || "dark");
+  const [theme, setTheme] = useState("dark");
 
   useLayoutEffect(() => {
     document.documentElement.dataset.theme = theme;
