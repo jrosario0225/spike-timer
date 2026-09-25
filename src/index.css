@@ -57,3 +57,38 @@ input:focus-visible {
     outline: 2px solid var(--gold);
     outline-offset: 3px;
 }
+
+body,
+button,
+.home-card,
+.jump-math,
+.tap-panel,
+.timestamps,
+.result-card,
+.theme-toggle {
+  transition:
+    background-color 500ms ease,
+    border-color 500ms ease,
+    color 500ms ease,
+    box-shadow 500ms ease;
+}
+
+svg * {
+  transition:
+    fill 500ms ease,
+    stroke 500ms ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body,
+  button,
+  .home-card,
+  .jump-math,
+  .tap-panel,
+  .timestamps,
+  .result-card,
+  .theme-toggle,
+  svg * {
+    transition: none;
+  }
+}
