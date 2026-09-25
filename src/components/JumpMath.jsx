@@ -19,11 +19,11 @@ export default function JumpMath() {
                 <line x1="150" y1="10" x2="150" y2="105" stroke="var(--gold)" strokeWidth="2" strokeDasharray="4 4" />
 
                 {/* takeoff point */}
-                <circle cx="30" cy="105" r="5" fill="var(--navy)" />
+                <circle cx="30" cy="105" r="5" fill="var(--primary)" />
                 <text x="30" y="122" textAnchor="middle" className="jump-math-label">takeoff</text>
 
                 {/* landing point */}
-                <circle cx="270" cy="105" r="5" fill="var(--navy)" />
+                <circle cx="270" cy="105" r="5" fill="var(--primary)" />
                 <text x="270" y="122" textAnchor="middle" className="jump-math-label">landing</text>
 
                 {/* apex / ideal contact point */}

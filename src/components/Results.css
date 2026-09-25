@@ -59,7 +59,7 @@
 }
 
 .chart-ground { stroke: var(--border); stroke-width: 1.5; }
-.chart-arc { fill: none; stroke: var(--navy); stroke-width: 3; }
+.chart-arc { fill: none; stroke: var(--primary); stroke-width: 3; }
 .chart-guide { stroke: var(--border); stroke-width: 1; stroke-dasharray: 4 4; }
 .ideal-marker { fill: var(--gold); stroke: var(--surface); stroke-width: 2; }
 .actual-marker { fill: var(--orange); stroke: var(--surface); stroke-width: 2; }

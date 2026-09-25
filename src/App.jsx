@@ -1,4 +1,4 @@
-import { useState, React } from 'react'
+import { useLayoutEffect, useState } from 'react'
 import './App.css'
 import { Analytics } from "@vercel/analytics/react"
 
@@ -14,6 +14,12 @@ export default function App() {
   const [uploadedFile, setUploadedFile] = useState(null);
   const [timestamps, setTimestamps] = useState(null);
   const [transitionClass, setTransitionClass] = useState("");
+  const [theme, setTheme] = useState(() => localStorage.getItem("spike-timer-theme") || "dark");
+
+  useLayoutEffect(() => {
+    document.documentElement.dataset.theme = theme;
+    localStorage.setItem("spike-timer-theme", theme);
+  }, [theme]);
 
   const handleUpload = (file) => {
     setUploadedFile(file);
@@ -51,6 +57,14 @@ export default function App() {
 
   return (
     <div className="app">
+      <button
+        className="theme-toggle"
+        type="button"
+        aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
+        onClick={() => setTheme((current) => current === "light" ? "dark" : "light")}
+      >
+        <span aria-hidden="true">{theme === "light" ? "☾" : "☀"}</span>
+      </button>
 
       {screen === "home" && (
         <HomeScreen
@@ -93,4 +107,3 @@ export default function App() {
   )
 
 }
-

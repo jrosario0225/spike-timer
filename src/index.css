@@ -23,6 +23,23 @@
     --shadow: 0 8px 24px rgba(30, 45, 77, 0.08);
 }
 
+:root[data-theme="dark"] {
+    color-scheme: dark;
+    --bg: #151a20;
+    --surface: #1f252b;
+    --surface-raised: #272e36;
+    --navy: #eef1f5;
+    --primary: #7187b1;
+    --primary-hover: #8197c0;
+    --blue: #92a7cc;
+    --orange: #d97950;
+    --gold: #d7ad42;
+    --text: #eef1f5;
+    --text-muted: #aeb7c2;
+    --border: #3a434e;
+    --shadow: 0 12px 34px rgba(0, 0, 0, 0.24);
+}
+
 body {
     background: var(--bg);
     color: var(--text);
