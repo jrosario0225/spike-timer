@@ -7,10 +7,13 @@ import HomeScreen from './components/HomeScreen'
 import VideoPlayback from './components/VideoPlayback';
 import Results from "./components/Results";
 
+const BOUNCE_EXIT_MS = 350;
+
 export default function App() {
   const [screen, setScreen] = useState('home');
   const [uploadedFile, setUploadedFile] = useState(null);
   const [timestamps, setTimestamps] = useState(null);
+  const [transitionClass, setTransitionClass] = useState("");
 
   const handleUpload = (file) => {
     setUploadedFile(file);
@@ -22,18 +25,26 @@ export default function App() {
   }
 
   const handleComplete = (takeoff, contact, landing) => {
-    setTimestamps({ takeoff, contact, landing })
-    setScreen("results");
+    // squash the playback screen out, then pop the results screen in
+    setTransitionClass("screen-exit-bounce");
+
+    setTimeout(() => {
+      setTimestamps({ takeoff, contact, landing });
+      setScreen("results");
+      setTransitionClass("screen-enter-bounce");
+    }, BOUNCE_EXIT_MS);
   }
 
   const handleRetry = () => {
     setTimestamps(null);
+    setTransitionClass("");
     setScreen("playback");
   }
 
   const handleGoHome = () => {
     setTimestamps(null);
     setUploadedFile(null);
+    setTransitionClass("");
     setScreen("home")
   }
 
@@ -49,21 +60,28 @@ export default function App() {
       )}
 
       {screen === "playback" && (
-        <VideoPlayback
-        uploadedFile={uploadedFile}
-        onGoBack={() => setScreen("home")}
-        onComplete={handleComplete}
-        />
+        <div className={transitionClass}>
+          <VideoPlayback
+          uploadedFile={uploadedFile}
+          onGoBack={() => setScreen("home")}
+          onComplete={handleComplete}
+          />
+        </div>
       )}
 
       {screen === "results" && timestamps && (
-        <Results
-        takeoff={timestamps.takeoff}
-        contact={timestamps.contact}
-        landing={timestamps.landing}
-        onRetry={handleRetry}
-        onGoHome={handleGoHome}
-        />
+        <div
+          className={transitionClass}
+          onAnimationEnd={() => setTransitionClass("")}
+        >
+          <Results
+          takeoff={timestamps.takeoff}
+          contact={timestamps.contact}
+          landing={timestamps.landing}
+          onRetry={handleRetry}
+          onGoHome={handleGoHome}
+          />
+        </div>
       )}
 
       {screen === "recording" && (

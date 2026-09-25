@@ -11,7 +11,7 @@ export default function JumpMath() {
                 <path
                     d="M 30 105 Q 150 10 270 105"
                     fill="none"
-                    stroke="var(--navy)"
+                    stroke="var(--primary)"
                     strokeWidth="3"
                 />
 

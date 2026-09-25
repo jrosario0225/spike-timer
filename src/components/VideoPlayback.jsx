@@ -32,7 +32,9 @@ export default function VideoPlayback({ uploadedFile, onGoBack, onComplete }) {
 
     useEffect(() => {
         if (uploadedFile && videoRef.current) {
-            videoRef.current.src = URL.createObjectURL(uploadedFile);
+            const videoUrl = URL.createObjectURL(uploadedFile);
+            videoRef.current.src = videoUrl;
+            return () => URL.revokeObjectURL(videoUrl);
         }
     }, [uploadedFile]);
 
@@ -44,11 +46,13 @@ export default function VideoPlayback({ uploadedFile, onGoBack, onComplete }) {
     };
 
     const TAP_LABELS = {
-        takeoff: "🦵 Tap at Takeoff",
-        contact: "🏐 Tap at Ball Contact",
-        landing: "🛬 Tap at Landing",
-        done: "✅ All moments recorded",
+        takeoff: "Tap at Takeoff",
+        contact: "Tap at Ball Contact",
+        landing: "Tap at Landing",
+        done: "All moments recorded",
     }
+
+    const stepNumber = nextTap === "takeoff" ? 1 : nextTap === "contact" ? 2 : 3;
 
     const handleStep = (seconds) => {
         if (!videoRef.current) return;
@@ -59,7 +63,10 @@ export default function VideoPlayback({ uploadedFile, onGoBack, onComplete }) {
 
     return (
         <div className="playback-container">
-            <h2 className="playback-title">Analyze Your Spike</h2>
+            <div className="playback-heading">
+                <h2 className="playback-title">Analyze Your Spike</h2>
+                <span className="playback-step">{stepNumber} / 3</span>
+            </div>
             <p className="playback-filename">{uploadedFile?.name}</p> {/* Takes the file name AND checks "hey is this a file"*/}
 
             <video
@@ -80,45 +87,44 @@ export default function VideoPlayback({ uploadedFile, onGoBack, onComplete }) {
                 <button className="frame-btn" onClick={() => handleStep(0.2)}> +0.2s </button>
             </div>
 
-            {/* Shows which tap comes next */}
-            <p className="tap-label">{TAP_LABELS[nextTap]}</p>
-
-            {/* If we still have timestamps we need to put down*/}
-            {!isComplete && (
-                <button className="tap-button" onClick={handleTap}>
-                    TAP
-                </button>
-            )}
+            <div className="tap-panel">
+                <div>
+                    <span className="tap-eyebrow">MARK THIS MOMENT</span>
+                    <p className="tap-label">{TAP_LABELS[nextTap]}</p>
+                </div>
+                {!isComplete && <span className="tap-step">{stepNumber} / 3</span>}
+                {!isComplete && (
+                    <button className="tap-button" onClick={handleTap}>TAP</button>
+                )}
+                {isComplete && (
+                    <button className="see-results-btn" onClick={() => onComplete(takeoff, contact, landing)}>
+                        See Results →
+                    </button>
+                )}
+            </div>
 
             <div className="timestamps">
 
                 <div className="timestamp-row">
-                    <span className="timestamp-label">🦵 Takeoff: </span>
+                    <span className="timestamp-label">Takeoff</span>
                     <span className="timestamp-value">{takeoff !== null ? `${takeoff.toFixed(3)}s` : "-"}</span>
                 </div>
 
                 <div className="timestamp-row">
-                    <span className="timestamp-label">🏐 Contact: </span>
+                    <span className="timestamp-label">Contact</span>
                     <span className="timestamp-value">{contact !== null ? `${contact.toFixed(3)}s` : "-"} </span>
                 </div>
 
                 <div className="timestamp-row">
-                    <span className="timestamp-label">🛬 Landing: </span>
+                    <span className="timestamp-label">Landing</span>
                     <span className="timestamp-value">{landing !== null ? `${landing.toFixed(3)}s` : "-"} </span>
                 </div>
 
             </div>
 
-            {/* If we have all of our timestamps, then we show the results */}
-            {isComplete && (
-                <button className="see-results-btn" onClick={() => onComplete(takeoff, contact, landing)}>
-                    See Results →
-                </button>
-            )}
-
             <div className="secondary-buttons">
-                <button className="secondary-btn" onClick={reset}>Reset Taps</button>
-                <button className="secondary-btn" onClick={onGoBack}> ← Pick a different video </button>
+                <button className="secondary-btn" onClick={reset}>Reset taps</button>
+                <button className="secondary-btn" onClick={onGoBack}>Pick a different video</button>
             </div>
         </div>
     )

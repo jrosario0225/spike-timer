@@ -38,6 +38,6 @@
 }
 
 .jump-math-formulas span {
-    color: var(--navy);
+    color: var(--text);
     font-weight: 600;
 }

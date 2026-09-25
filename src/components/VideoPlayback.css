@@ -3,6 +3,13 @@
     flex-direction: column;
     min-height: 100dvh;
     padding: 24px 20px 32px;
+    gap: 13px;
+}
+
+.playback-heading {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
     gap: 16px;
 }
 
@@ -10,6 +17,15 @@
     font-family: "Bebas Neue", sans-serif;
     font-size: 2rem;
     color: var(--navy);
+}
+
+.playback-step,
+.tap-step {
+    color: var(--gold);
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 0.78rem;
+    font-weight: 600;
+    white-space: nowrap;
 }
 
 .playback-filename {
@@ -21,24 +37,28 @@
 .playback-video {
     width: 100%;
     border-radius: var(--radius);
-    background: #000;
+    max-height: 44dvh;
+    object-fit: contain;
+    background: #111318;
+    border: 1px solid var(--border);
 }
 
 
 .frame-buttons {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    gap: 8px;
+    gap: 5px;
 }
 
 .frame-btn {
-    padding: 8px 4px;
-    background: var(--surface);
-    border: 1.5px solid var(--border);
+    min-height: 38px;
+    padding: 6px 2px;
+    background: var(--surface-raised);
+    border: 1px solid var(--border);
     border-radius: 8px;
-    font-size: 0.75rem;
+    font-size: 0.68rem;
     font-weight: 600;
-    color: var(--navy);
+    color: var(--text);
     cursor: pointer;
     text-align: center;
 }
@@ -48,22 +68,40 @@
     color: white;
 }
 
+.tap-panel {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 10px;
+    align-items: center;
+    padding: 16px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+}
+
+.tap-eyebrow {
+    color: var(--text-muted);
+    font-size: 0.66rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+}
+
 .tap-label {
-    text-align: center;
     font-weight: 600;
     font-size: 1rem;
-    color: var(--navy);
-    padding: 8px;
+    color: var(--text);
+    margin-top: 3px;
 }
 
 .tap-button {
+    grid-column: 1 / -1;
     width: 100%;
     padding: 20px;
     background: var(--orange);
     color: white;
-    font-family: "Bebas Neue", san-serif;
-    font-size: 2rem;
-    letter-spacing: 2px;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
     border: none;
     border-radius: var(--radius);
     cursor: pointer;
@@ -97,7 +135,7 @@
 .timestamp-label {
     font-weight: 600;
     font-size: 0.9rem;
-    color: var(--navy);
+    color: var(--text);
 }
 
 .timestamp-value {
@@ -107,6 +145,7 @@
 }
 
 .see-results-btn {
+    grid-column: 1 / -1;
     width: 100%;
     padding: 16px;
     background: var(--navy);
@@ -140,10 +179,16 @@
 }
 
 .secondary-btn:active {
-    border-color: var(--navy);
-    color: var(--navy);
+    border-color: var(--blue);
+    color: var(--text);
 }
 
 button {
     outline: none;
+}
+
+@media (max-width: 360px) {
+    .playback-container { padding-inline: 14px; }
+    .frame-buttons { gap: 3px; }
+    .frame-btn { font-size: 0.62rem; }
 }

@@ -7,16 +7,20 @@
 }
 
 :root {
-    --bg: #f0ede8;
-    --surface: #ffffff;
+    --bg: #f1eee9;
+    --surface: #fffdfa;
+    --surface-raised: #f6f2ec;
     --navy: #1e2d4d;
-    --orange: #c85b25;
-    --gold: #c9960c;
+    --primary: #1e2d4d;
+    --primary-hover: #2a3d65;
+    --blue: #8293b6;
+    --orange: #cf642f;
+    --gold: #ce9b17;
     --text: #1e2d4d;
     --text-muted: #7a8499;
-    --border: #e0dbd3;
+    --border: #ded8cf;
     --radius: 16px;
-    --shadow: 0 2px 12px rgba(30, 45, 77, 0.08);
+    --shadow: 0 8px 24px rgba(30, 45, 77, 0.08);
 }
 
 body {
@@ -24,4 +28,15 @@ body {
     color: var(--text);
     font-family: "DM Sans", sans-serif;
     min-height: 100dvh;
+}
+
+button,
+input {
+    font: inherit;
+}
+
+button:focus-visible,
+input:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
 }

@@ -3,7 +3,7 @@ import "./HomeScreen.css"
 import JumpMath from "./JumpMath";
 
 
-export default function HomeScreen({ onRecord, onUpload }) {
+export default function HomeScreen({ onUpload }) {
     const fileInputRef = useRef(null);
 
     const handleFileChange = (e) => {
@@ -15,8 +15,8 @@ export default function HomeScreen({ onRecord, onUpload }) {
         <div className="home-container">
 
             <div>
-                <h1 className="home-title">Spike Analyzer</h1>
-                <p className="home-subtitle">Analyze your spike timing</p>
+                <h1 className="home-title">Spike Timer</h1>
+                <p className="home-subtitle">Analyze your spike.</p>
             </div>
 
 
@@ -32,8 +32,8 @@ export default function HomeScreen({ onRecord, onUpload }) {
 
                 { /* upload button */}
                 <button className="home-card" onClick={() => fileInputRef.current.click()}>
-                    <span className="card-icon">🎬</span>
-                    <div className="card-title">Upload footage</div>
+                    <span className="card-icon" aria-hidden="true">↑</span>
+                    <div className="card-title">Upload spike video</div>
                     <span className="card-arrow">→</span>
                 </button>
             </div>
@@ -48,7 +48,7 @@ export default function HomeScreen({ onRecord, onUpload }) {
 
             <JumpMath />
 
-            <p className="home-privacy-note">🔒 Your videos never leave your device — nothing is saved.</p>
+            <p className="home-privacy-note">🔒 Videos don’t get saved.</p>
 
         </div>
     )
