@@ -39,7 +39,15 @@ export default function Results({ takeoff, contact, landing, onRetry, onGoHome }
                 <svg className="contact-chart" viewBox="0 0 320 140" role="img" aria-label={`Ideal contact ${metrics.idealContact.toFixed(3)} seconds, actual contact ${metrics.actualContact.toFixed(3)} seconds after takeoff`}>
                     <line x1="30" y1="110" x2="290" y2="110" className="chart-ground" />
                     <path d="M30 110 Q160 10 290 110" className="chart-arc" />
-                    <line x1="160" y1="60" x2="160" y2="110" className="chart-guide" />
+                    <line x1="152" y1="30" x2="152" y2="110" className="chart-boundary" />
+                    <line x1="168" y1="30" x2="168" y2="110" className="chart-boundary" />
+                    <line x1="30" y1="30" x2="30" y2="110" className="chart-endpoint-guide" />
+                    <line x1="290" y1="30" x2="290" y2="110" className="chart-endpoint-guide" />
+                    <text x="84" y="17" textAnchor="middle" className="chart-region-label">APPROACHED LATE</text>
+                    <text x="160" y="17" textAnchor="middle" className="chart-region-label">PERFECT</text>
+                    <text x="236" y="17" textAnchor="middle" className="chart-region-label">APPROACHED EARLY</text>
+                    <circle cx="30" cy="110" r="6" className="chart-endpoint" />
+                    <circle cx="290" cy="110" r="6" className="chart-endpoint" />
                     <circle cx="160" cy="60" r="6" className="ideal-marker" />
                     <circle cx={actualX} cy={actualY} r="6" className="actual-marker" />
                     <text x="30" y="132" className="chart-label">TAKEOFF</text>

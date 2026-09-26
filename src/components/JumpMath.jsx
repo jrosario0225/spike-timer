@@ -20,13 +20,13 @@ export default function JumpMath() {
                     strokeWidth="3"
                 />
 
-                <line
-                    className="jump-math-ideal-guide"
-                    x1="150" y1="48" x2="150" y2="108"
-                    stroke="var(--gold)"
-                    strokeWidth="1.5"
-                    strokeDasharray="4 4"
-                />
+                <line className="timing-boundary" x1="142" y1="28" x2="142" y2="108" />
+                <line className="timing-boundary" x1="158" y1="28" x2="158" y2="108" />
+                <line className="jump-math-endpoint-guide" x1="30" y1="28" x2="30" y2="108" />
+                <line className="jump-math-endpoint-guide" x1="270" y1="28" x2="270" y2="108" />
+                <text x="76" y="16" textAnchor="middle" className="timing-region-label">APPROACHED LATE</text>
+                <text x="150" y="16" textAnchor="middle" className="timing-region-label">PERFECT</text>
+                <text x="224" y="16" textAnchor="middle" className="timing-region-label">APPROACHED EARLY</text>
 
                 <circle className="jump-math-endpoint" cx="30" cy="108" r="5" fill="var(--primary)" />
                 <text x="30" y="126" textAnchor="middle" className="jump-math-label">takeoff</text>
@@ -34,12 +34,12 @@ export default function JumpMath() {
                 <text x="270" y="126" textAnchor="middle" className="jump-math-label">landing</text>
 
                 <circle className="jump-math-ideal-dot" cx="150" cy="48" r="5" fill="var(--gold)" />
-                <text x="150" y="34" textAnchor="middle" className="jump-math-label jump-math-label-gold jump-math-ideal-label">
+                <text x="150" y="72" textAnchor="middle" className="jump-math-label jump-math-label-gold jump-math-ideal-label">
                     ideal contact
                 </text>
 
                 <circle className="jump-math-actual-dot" cx="190" cy="55" r="5" fill="var(--orange)" />
-                <text x="210" y="41" textAnchor="middle" className="jump-math-label jump-math-label-orange jump-math-actual-label">
+                <text x="203" y="47" textAnchor="start" className="jump-math-label jump-math-label-orange jump-math-actual-label">
                     your contact
                 </text>
             </svg>
